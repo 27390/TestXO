@@ -14,7 +14,6 @@ protocol GameViewModel {
     
     func getNumberOfGridItems () -> Int
     func getNumberOfItemsPerRow () -> Int
-    func resetGame ()
     func endTurnWithMove (position: Position, player: Player, completion: feedbackClosure?)
     func getPlayer(order: PlayerOrder) -> Player
 }

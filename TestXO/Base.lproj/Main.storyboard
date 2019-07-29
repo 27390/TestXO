@@ -37,8 +37,22 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a9S-Yr-NUp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="1" green="0.99823915437869681" blue="0.36454398891658679" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="a9S-Yr-NUp" firstAttribute="top" secondItem="Yap-6l-JLR" secondAttribute="top" id="TIa-1m-AMG"/>
+                                            <constraint firstAttribute="bottom" secondItem="a9S-Yr-NUp" secondAttribute="bottom" id="Zwx-iM-Bv5"/>
+                                            <constraint firstAttribute="trailing" secondItem="a9S-Yr-NUp" secondAttribute="trailing" id="bz8-by-u8Q"/>
+                                            <constraint firstItem="a9S-Yr-NUp" firstAttribute="leading" secondItem="Yap-6l-JLR" secondAttribute="leading" id="k4K-BE-9We"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="tokenImage" destination="a9S-Yr-NUp" id="pHF-Wr-bS5"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

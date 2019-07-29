@@ -20,3 +20,8 @@ enum PlayerOrder {
 }
 
 typealias Position = (row: Int, column: Int)
+
+enum ImageNames: String {
+    case imageX = "img_x"
+    case imageO = "img_o"
+}

@@ -77,10 +77,6 @@ extension GameViewModelImpl: GameViewModel {
         return gameModel.boardSize
     }
     
-    func resetGame() {
-        
-    }
-    
     func getNumberOfGridItems() -> Int {
         return gameModel.boardSize * gameModel.boardSize
     }

@@ -24,33 +24,35 @@ class BoardViewController: UIViewController {
         super.viewDidLoad()
         if gameViewModel == nil {
             
-            //should not hardcode this
+            //TODO: should not hardcode this
             gameViewModel = GameViewModelImpl(boardSize: 3, numberOfItemsInLine: 3)
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-    
     //MARK: IBActions
     @IBAction func restartButtonPressed(_ sender: Any) {
-        
+        self.resetGame()
     }
     
     //MARK: UI methods
-    func setupCollectionView () {
-        
+    private func resetGame () {
+        self.titleLabel.text = ""
+        self.boardCollectionView.isUserInteractionEnabled = true
+        self.boardCollectionView.reloadData()
+        //TODO: should REALLY not do it like this
+        self.gameViewModel = GameViewModelImpl(boardSize: 3, numberOfItemsInLine: 3)
+    }
+    
+    private func setupGameFinished(winnerPlayer: Player?) {
+        self.boardCollectionView.isUserInteractionEnabled = false
+        if winnerPlayer == Player.player1 {
+            //TODO: should not hardcode that here...2.30 AM
+            self.titleLabel.text = "Player 1 won!"
+        } else if winnerPlayer == Player.player2 {
+            self.titleLabel.text = "Player 2 won!"
+        } else {
+            self.titleLabel.text = "No one won"
+        }
     }
     
 }
@@ -65,7 +67,7 @@ extension BoardViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GridCell.reuseIdentifier, for: indexPath) as? GridCell else {
             return GridCell()
         }
-        
+        cell.config()
         return cell
     }
     
@@ -102,6 +104,33 @@ extension BoardViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return sectionMinimumSeparator
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GridCell else {
+            return
+        }
+        
+        let player = self.gameViewModel.getPlayer(order: .current)
+        cell.config(player: player)
+        let row = indexPath.row / gameViewModel.getNumberOfItemsPerRow()
+        let column = indexPath.row % gameViewModel.getNumberOfItemsPerRow()
+        self.gameViewModel.endTurnWithMove(position: Position(row: row, column: column), player: player) { (gameOver, winningPositions, winningPlayer) in
+            if gameOver {
+                self.setupGameFinished(winnerPlayer: winningPlayer)
+            }
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? GridCell else {
+            return false
+        }
+        if cell.isSelected {
+            return false
+        }
+        return true
     }
     
 }
