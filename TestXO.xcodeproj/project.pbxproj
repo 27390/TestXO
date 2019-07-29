@@ -14,6 +14,11 @@
 		FA702DF222EE165200EE9A13 /* TestXOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA702DF122EE165200EE9A13 /* TestXOTests.swift */; };
 		FA702DFE22EE197100EE9A13 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA702DFD22EE197100EE9A13 /* BoardViewController.swift */; };
 		FA702E0422EE1D7700EE9A13 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA702E0322EE1D7700EE9A13 /* GridCell.swift */; };
+		FA702E0622EE40BC00EE9A13 /* GameActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA702E0522EE40BC00EE9A13 /* GameActionModel.swift */; };
+		FA702E0822EE40EC00EE9A13 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA702E0722EE40EC00EE9A13 /* GameModel.swift */; };
+		FA702E0C22EE426200EE9A13 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA702E0B22EE426200EE9A13 /* Constants.swift */; };
+		FA702E1122EE46A500EE9A13 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA702E1022EE46A500EE9A13 /* GameViewModel.swift */; };
+		FA702E1322EE4FA400EE9A13 /* GameViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA702E1222EE4FA400EE9A13 /* GameViewModelImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,11 @@
 		FA702DF322EE165200EE9A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA702DFD22EE197100EE9A13 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 		FA702E0322EE1D7700EE9A13 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		FA702E0522EE40BC00EE9A13 /* GameActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameActionModel.swift; sourceTree = "<group>"; };
+		FA702E0722EE40EC00EE9A13 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		FA702E0B22EE426200EE9A13 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FA702E1022EE46A500EE9A13 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		FA702E1222EE4FA400EE9A13 /* GameViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 		FA702DDB22EE165100EE9A13 /* TestXO */ = {
 			isa = PBXGroup;
 			children = (
+				FA702E0922EE423D00EE9A13 /* Utils */,
 				FA702E0222EE1D0700EE9A13 /* Views */,
 				FA702E0022EE19B100EE9A13 /* Models */,
 				FA702DFF22EE19A200EE9A13 /* View Models */,
@@ -112,6 +123,7 @@
 		FA702DFF22EE19A200EE9A13 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA702E0F22EE467F00EE9A13 /* GameViewModel */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -119,6 +131,8 @@
 		FA702E0022EE19B100EE9A13 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA702E0522EE40BC00EE9A13 /* GameActionModel.swift */,
+				FA702E0722EE40EC00EE9A13 /* GameModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -129,6 +143,31 @@
 				FA702E0322EE1D7700EE9A13 /* GridCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FA702E0922EE423D00EE9A13 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA702E0A22EE424B00EE9A13 /* Constants */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FA702E0A22EE424B00EE9A13 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FA702E0B22EE426200EE9A13 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		FA702E0F22EE467F00EE9A13 /* GameViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FA702E1022EE46A500EE9A13 /* GameViewModel.swift */,
+				FA702E1222EE4FA400EE9A13 /* GameViewModelImpl.swift */,
+			);
+			path = GameViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +271,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA702E0822EE40EC00EE9A13 /* GameModel.swift in Sources */,
 				FA702DDD22EE165100EE9A13 /* AppDelegate.swift in Sources */,
+				FA702E1322EE4FA400EE9A13 /* GameViewModelImpl.swift in Sources */,
+				FA702E0622EE40BC00EE9A13 /* GameActionModel.swift in Sources */,
 				FA702DFE22EE197100EE9A13 /* BoardViewController.swift in Sources */,
 				FA702E0422EE1D7700EE9A13 /* GridCell.swift in Sources */,
+				FA702E0C22EE426200EE9A13 /* Constants.swift in Sources */,
+				FA702E1122EE46A500EE9A13 /* GameViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
