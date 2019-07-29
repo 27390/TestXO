@@ -16,12 +16,17 @@ class BoardViewController: UIViewController {
     @IBOutlet weak var boardCollectionView: UICollectionView!
     
     //MARK: private
-    private let itemsPerRow: CGFloat = 3
     private let sectionMinimumSeparator: CGFloat = 1
+    private var gameViewModel: GameViewModel!
     
     //MARK: Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        if gameViewModel == nil {
+            
+            //should not hardcode this
+            gameViewModel = GameViewModelImpl(boardSize: 3, numberOfItemsInLine: 3)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,12 +55,10 @@ class BoardViewController: UIViewController {
     
 }
 
-
-
 // MARK: - Collection View Datasource
 extension BoardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return gameViewModel.getNumberOfGridItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -75,9 +78,9 @@ extension BoardViewController : UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let paddingSpace = sectionMinimumSeparator * (itemsPerRow - 1)
+        let paddingSpace = sectionMinimumSeparator * CGFloat(gameViewModel.getNumberOfItemsPerRow() - 1)
         let availableWidth: CGFloat = collectionView.bounds.size.width - paddingSpace
-        let sizePerItem: CGFloat = (availableWidth / itemsPerRow)
+        let sizePerItem: CGFloat = availableWidth / CGFloat(gameViewModel.getNumberOfItemsPerRow())
         
         return CGSize(width: sizePerItem, height: sizePerItem)
     }

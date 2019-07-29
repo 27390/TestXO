@@ -69,7 +69,7 @@ class TestXOTests: XCTestCase {
         gameModel3Lines.endTurnWithMove(position: p2, player: Player.player1, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p3, player: Player.player1, completion: { (gameOver, winningPositions, winnerPlayer) in
             
-            XCTAssertEqual(winnerPlayer, Player.player1)
+            XCTAssertNil(winnerPlayer)
             XCTAssertFalse(gameOver)
             XCTAssertNil(winningPositions)
         })
@@ -95,7 +95,7 @@ class TestXOTests: XCTestCase {
         gameModel3Lines.endTurnWithMove(position: p7, player: Player.player2, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p9, player: Player.player1, completion: { (gameOver, winningPositions, winnerPlayer) in
             
-            XCTAssertEqual(winnerPlayer, Player.player1)
+            XCTAssertNil(winnerPlayer)
             XCTAssertTrue(gameOver)
             XCTAssertNil(winningPositions)
         })

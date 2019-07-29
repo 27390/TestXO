@@ -10,9 +10,11 @@ import Foundation
 
 protocol GameViewModel {
     
-    typealias feedbackClosure = (_ gameCompleted: Bool, _ winningMoves: [Position]?, _ winningPlayer: Player) -> ()
+    typealias feedbackClosure = (_ gameCompleted: Bool, _ winningMoves: [Position]?, _ winningPlayer: Player?) -> ()
     
     func getNumberOfGridItems () -> Int
+    func getNumberOfItemsPerRow () -> Int
+    func resetGame ()
     func endTurnWithMove (position: Position, player: Player, completion: feedbackClosure?)
     func getPlayer(order: PlayerOrder) -> Player
 }
