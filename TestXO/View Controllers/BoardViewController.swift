@@ -2,9 +2,6 @@
 //  BoardViewController.swift
 //  TestXO
 //
-//  Created by Alex on 28/07/2019.
-//  Copyright © 2019 Alex. All rights reserved.
-//
 
 import UIKit
 
@@ -44,7 +41,7 @@ class BoardViewController: UIViewController {
     private func setupGameFinished(winnerPlayer: Player?) {
         self.boardCollectionView.isUserInteractionEnabled = false
         if winnerPlayer == Player.player1 {
-            //TODO: should not hardcode that here...2.30 AM
+            //TODO: should not hardcode that here
             self.titleLabel.text = "Player 1 won!"
         } else if winnerPlayer == Player.player2 {
             self.titleLabel.text = "Player 2 won!"
