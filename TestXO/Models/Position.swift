@@ -2,9 +2,6 @@
 //  Position.swift
 //  TestXO
 //
-//  Created by Alex on 29/07/2019.
-//  Copyright © 2019 Alex. All rights reserved.
-//
 
 import Foundation
 struct Position {
