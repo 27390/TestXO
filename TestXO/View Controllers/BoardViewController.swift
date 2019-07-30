@@ -1,7 +1,6 @@
 //
 //  BoardViewController.swift
 //  TestXO
-//
 
 import UIKit
 

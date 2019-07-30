@@ -1,7 +1,7 @@
 //
 //  Position.swift
 //  TestXO
-//
+
 
 import Foundation
 struct Position {

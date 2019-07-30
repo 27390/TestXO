@@ -1,7 +1,6 @@
 //
 //  GameActionModel.swift
 //  TestXO
-//
 
 import Foundation
 struct GameActionModel {
