@@ -10,5 +10,4 @@ An X and O game implementation
 
 
 **Known bugs**
-1. The diagonal winning functionality has yet to be implemented
 2. Some methods were rushed for code quality.
