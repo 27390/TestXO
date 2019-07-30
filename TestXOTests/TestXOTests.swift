@@ -14,7 +14,7 @@ class TestXOTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        gameModel3Lines = GameViewModelImpl(boardSize: 3, numberOfItemsInLine: 3)
+        gameModel3Lines = GameViewModelImpl(boardSize: 3)
     }
 
     override func tearDown() {
@@ -34,9 +34,9 @@ class TestXOTests: XCTestCase {
     
     
     func testWinnerInLine(){
-        let p1 = Position(row: 2, column: 2)
-        let p2 = Position(row: 3, column: 2)
-        let p3 = Position(row: 1, column: 2)
+        let p1 = Position(row: 1, column: 1)
+        let p2 = Position(row: 2, column: 1)
+        let p3 = Position(row: 0, column: 1)
         gameModel3Lines.endTurnWithMove(position: p1, player: Player.player1, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p2, player: Player.player1, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p3, player: Player.player1, completion: { (gameOver, winningPositions, winnerPlayer) in
@@ -47,10 +47,24 @@ class TestXOTests: XCTestCase {
         })
     }
     
-    func testWinnerInDiagonal(){
-        let p1 = Position(row: 1, column: 1)
-        let p2 = Position(row: 2, column: 2)
-        let p3 = Position(row: 3, column: 3)
+    func testWinnerInLeftDiagonal(){
+        let p1 = Position(row: 0, column: 0)
+        let p2 = Position(row: 1, column: 1)
+        let p3 = Position(row: 2, column: 2)
+        gameModel3Lines.endTurnWithMove(position: p1, player: Player.player1, completion: nil)
+        gameModel3Lines.endTurnWithMove(position: p2, player: Player.player1, completion: nil)
+        gameModel3Lines.endTurnWithMove(position: p3, player: Player.player1, completion: { (gameOver, winningPositions, winnerPlayer) in
+            
+            XCTAssertEqual(winnerPlayer, Player.player1)
+            XCTAssertTrue(gameOver)
+            XCTAssertNotNil(winningPositions)
+        })
+    }
+    
+    func testWinnerInRightDiagonal(){
+        let p1 = Position(row: 0, column: 2)
+        let p2 = Position(row: 1, column: 1)
+        let p3 = Position(row: 2, column: 0)
         gameModel3Lines.endTurnWithMove(position: p1, player: Player.player1, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p2, player: Player.player1, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p3, player: Player.player1, completion: { (gameOver, winningPositions, winnerPlayer) in
@@ -62,9 +76,9 @@ class TestXOTests: XCTestCase {
     }
     
     func testNotWinner(){
-        let p1 = Position(row: 2, column: 3)
-        let p2 = Position(row: 3, column: 2)
-        let p3 = Position(row: 1, column: 2)
+        let p1 = Position(row: 1, column: 2)
+        let p2 = Position(row: 2, column: 1)
+        let p3 = Position(row: 0, column: 1)
         gameModel3Lines.endTurnWithMove(position: p1, player: Player.player1, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p2, player: Player.player1, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p3, player: Player.player1, completion: { (gameOver, winningPositions, winnerPlayer) in
@@ -76,15 +90,15 @@ class TestXOTests: XCTestCase {
     }
     
     func testDraw(){
-        let p1 = Position(row: 1, column: 1)
-        let p2 = Position(row: 1, column: 2)
-        let p3 = Position(row: 1, column: 3)
-        let p4 = Position(row: 2, column: 1)
-        let p5 = Position(row: 2, column: 2)
-        let p6 = Position(row: 2, column: 3)
-        let p7 = Position(row: 3, column: 1)
-        let p8 = Position(row: 3, column: 2)
-        let p9 = Position(row: 3, column: 3)
+        let p1 = Position(row: 0, column: 0)
+        let p2 = Position(row: 0, column: 1)
+        let p3 = Position(row: 0, column: 2)
+        let p4 = Position(row: 1, column: 0)
+        let p5 = Position(row: 1, column: 1)
+        let p6 = Position(row: 1, column: 2)
+        let p7 = Position(row: 2, column: 0)
+        let p8 = Position(row: 2, column: 1)
+        let p9 = Position(row: 2, column: 2)
         gameModel3Lines.endTurnWithMove(position: p1, player: Player.player1, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p2, player: Player.player2, completion: nil)
         gameModel3Lines.endTurnWithMove(position: p3, player: Player.player1, completion: nil)

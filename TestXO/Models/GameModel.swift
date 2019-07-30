@@ -10,8 +10,7 @@ import Foundation
 
 struct GameModel {
     
-    let boardSize: Int
-    let numberOfItemsInLineToWin: Int
+    let boardRowColumnSize: Int
     var actions: [GameActionModel]
     var currentPlayer: Player
     

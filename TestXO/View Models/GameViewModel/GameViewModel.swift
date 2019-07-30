@@ -35,5 +35,10 @@ protocol GameViewModel {
     ///
     /// - Parameter order: can be previous player, current player or next player
     /// - Returns: the player
-    func getPlayer(order: PlayerOrder) -> Player
+    func getPlayer (order: PlayerOrder) -> Player
+    
+    /// resets game
+    func reset ()
+    
+    static func instantiate (boardSize: Int) -> GameViewModel
 }

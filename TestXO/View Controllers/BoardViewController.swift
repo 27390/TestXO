@@ -17,15 +17,14 @@ class BoardViewController: UIViewController {
     
     //MARK: private
     private let sectionMinimumSeparator: CGFloat = 1
+    private let boardSize: Int = 3
     private var gameViewModel: GameViewModel!
     
     //MARK: Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         if gameViewModel == nil {
-            
-            //TODO: should not hardcode this
-            gameViewModel = GameViewModelImpl(boardSize: 3, numberOfItemsInLine: 3)
+            gameViewModel = GameViewModelImpl.instantiate(boardSize: boardSize)
         }
     }
     
@@ -39,8 +38,7 @@ class BoardViewController: UIViewController {
         self.titleLabel.text = ""
         self.boardCollectionView.isUserInteractionEnabled = true
         self.boardCollectionView.reloadData()
-        //TODO: should REALLY not do it like this
-        self.gameViewModel = GameViewModelImpl(boardSize: 3, numberOfItemsInLine: 3)
+        self.gameViewModel.reset()
     }
     
     private func setupGameFinished(winnerPlayer: Player?) {
@@ -51,7 +49,7 @@ class BoardViewController: UIViewController {
         } else if winnerPlayer == Player.player2 {
             self.titleLabel.text = "Player 2 won!"
         } else {
-            self.titleLabel.text = "No one won"
+            self.titleLabel.text = "Draw"
         }
     }
     

@@ -14,12 +14,9 @@ enum Player: Int {
 }
 
 enum PlayerOrder {
-    case previous
     case current
     case next
 }
-
-typealias Position = (row: Int, column: Int)
 
 enum ImageNames: String {
     case imageX = "img_x"
